@@ -43,4 +43,76 @@ function countMoves(numbers) {
     return sum - min * numbers.length
 }
 
-countMoves([2, 3, 4, 5, 6, 7])
+countMoves([2, 3, 4, 5, 6, 7]);
+
+'695. Max Area of Island'
+
+var maxAreaOfIsland = function(grid) {
+    let biggest = 0;
+    let count;
+    let rows = grid.length;
+    let cols = grid[0].length;
+    
+    const recursionFunc = (i, j) => {
+        if (i < rows && i >= 0 && j < cols && j >= 0 && grid[i][j] > 0) {
+            count++;
+            grid[i][j] = -1;
+            
+            recursionFunc(i + 1, j, count);
+            recursionFunc(i - 1, j, count);
+            recursionFunc(i, j + 1, count);
+            recursionFunc(i, j - 1, count);
+        }
+    }
+    
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] > 0) {
+                count = 0;
+                recursionFunc(i, j, count);
+                biggest = Math.max(biggest, count)
+            }
+        }
+    }
+    
+    return biggest
+};
+
+
+'200. Number of Islands'
+
+var numIslands = function(grid) {
+    let count = 0;
+    
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] === '1') {
+                count++;
+                recursionFunc(i, j, grid);
+            }
+        }
+    }
+    
+    return count
+};
+
+var isValid = function(i, j, grid) {
+    if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
+        return false
+    }
+    
+    return true
+}
+
+var recursionFunc = function(i, j, grid) {
+    if (!isValid(i, j, grid) || grid[i][j] === '0') return;
+    
+    grid[i][j] = '0';
+    
+    recursionFunc(i + 1, j, grid);
+    recursionFunc(i - 1, j, grid);
+    recursionFunc(i, j + 1, grid);
+    recursionFunc(i, j - 1, grid);
+};
+
+
