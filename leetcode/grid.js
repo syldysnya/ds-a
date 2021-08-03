@@ -115,4 +115,42 @@ var recursionFunc = function(i, j, grid) {
     recursionFunc(i, j - 1, grid);
 };
 
+'1254. Number of Closed Islands'
 
+var closedIsland = function(grid) {
+    let total = 0;
+    let count;
+    let rows = grid.length;
+    let cols = grid[0].length;
+    
+    const recursionFunc = (i, j) => {
+        if (i < 0 || j < 0 || i >= rows || j >= cols) {
+            count = Number.NEGATIVE_INFINITY;
+            return
+        };
+        if (grid[i][j] === -1) return;
+        if (grid[i][j] > 0) {
+            count++;
+            return
+        }
+        
+        grid[i][j] = -1;
+        
+        recursionFunc(i + 1, j, count);
+        recursionFunc(i - 1, j, count);
+        recursionFunc(i, j - 1, count);
+        recursionFunc(i, j + 1, count);
+    };
+    
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] === 0) {
+                count = 0;
+                recursionFunc(i, j, count);
+                if (count >= 4) total++
+            };
+        };
+    };
+    
+    return total;
+};
