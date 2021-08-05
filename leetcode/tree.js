@@ -70,8 +70,8 @@ function recursionParent(node, target) { // node = 20, target = 16
  return recursion(node.parent, target);
 }
 
-function recursionChild(node) { // node = 12.5
-   if (node.left === null) return node.key; // 12.5
+function recursionChild(node) {
+   if (node.left === null) return node.key;
  
- return recursion(node.left); // node = 13
+ return recursion(node.left);
 }
