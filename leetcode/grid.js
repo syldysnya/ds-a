@@ -1,4 +1,4 @@
-const moves = [[-1, 0], [1, 0], [0, 1], [0, -1]];
+```const moves = [[-1, 0], [1, 0], [0, 1], [0, -1]];
 
 function reachTheEnd(grid, maxTime, pos = [0, 0]) {
     // . . # #
@@ -26,7 +26,7 @@ function reachTheEnd(grid, maxTime, pos = [0, 0]) {
     })
     
     return 'No';
-};
+};```
 
 let grid = ['..', '..'];
 
