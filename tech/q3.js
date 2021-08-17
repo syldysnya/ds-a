@@ -64,7 +64,6 @@ An array of integers, where the ith element is the answer for ith query.
 `
 
 const findTheTriples = (arr, queries) => {
-    
 }
 
 arr1 = [1, 2, 3, 4, 5]
