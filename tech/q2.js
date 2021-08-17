@@ -65,16 +65,53 @@ const sortMatrixByOccurrences = (m) => {
 
     const values = Object.values(newObj);
     let sorted = [].concat(...values);
-    let newArr = new Array(row).fill([]);
+    let newArr = m;
     
-    for (let r = 0; r < row; r++) {
-        for (let num = sorted.length - 1; num >= 0; num--) {
-            for (let c = 0; c < col; c++) {
-                
-            }
+    let i = 0;
+    // where we started
+    let startRow = row - 1;
+    let startCol = col - 1;
+    // what position we are at
+    let currRow = startRow;
+    let currCol = startCol;
+    let length = row * col;
+    
+    while (i < length) {
+        if (isOutOfBound(currRow, currCol, row, col))  {
+            // make a new start
+            let newStartArr = getStart(startRow, startCol);
+            [startRow, startCol] = newStartArr;
+            [currRow, currCol] = newStartArr;
         }
+        
+        newArr[currRow][currCol] = sorted[i];
+        [currRow, currCol] = getNextUpperRightDiagonal(currRow, currCol);
+        i++
     }
+    
+    return newArr;
 }
+
+const isOutOfBound = (row, col, rowLength, colLength) => {
+    if (row >= rowLength || row < 0 || col >= colLength || col < 0) return true;
+    return false;
+}
+
+const getStart = (oldStartRow, oldStartCol) => {
+    if (oldStartCol > 0) {
+        return [oldStartRow, oldStartCol - 1];
+    } else if (oldStartRow > 0) {
+        return [oldStartRow - 1, 0];
+    }
+    
+    return null;
+  }
+  
+const getNextUpperRightDiagonal = (row, col) => {
+    return [row -1, col + 1];
+}
+  
+  
 
 m1 = [[5,4], [4,5]]
 // Output: [[5,5], [4,4]]
@@ -82,4 +119,4 @@ m2 = [[1]]
 // Output: [[1]]
 m3 = [[1,4,-2], [-2,3,4], [3,1,3]]
 // Output: [[3,3,4], [3,4,1], [1,-2,-2]]
-sortMatrixByOccurrences(m3);
+console.log(sortMatrixByOccurrences(m3));
