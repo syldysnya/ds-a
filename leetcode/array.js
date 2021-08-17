@@ -38,3 +38,77 @@ const groupAnagrams = (words) => {
 const words = ['yo', 'act', 'oy'];
 console.log(groupAnagrams(words))
 
+
+`key =  {
+	'1': ['a','b'],
+  '2': ['c','d' .. ].length = 12
+}
+
+string = '121'
+
+
+[
+	'aca',
+  'acb',
+  'ada',
+  'adb',
+  ...
+]
+
+[ aca, acb, ada, adb, bca, bcb, bda, bdb ]
+  000  001  010  011  100  101  110  111
+ 
+ start -> 000 -> 001 -> 010
+ 
+ string = '122'
+ 
+ [ acc, acd, adc, add, bcc, bcd, bdc, bdd ]
+   000  001  010  011  100  101  110  111
+   
+   start -> 000
+   end   -> 111
+   
+  +1 -> move 1 left -> +1 -> move 1 left -> +1
+  												 ['a','b']											['c','d' .. ].length = 12
+								 '121'
+                [0,0,0] -> [0,0,1] -> [0,0,2] -> [0,0,0] -> [0,1,0] -> [0,1,1] -> [0,1,2] -> [0,1,0] -> [0,2,0] -> [0,0,0]    -> [1,0,0] 
+                								|          |									 |						|					 |					| 			 |	 				|
+                                ?					 ?									 ?					add	1		out of bound	reset	  add one	 Out of bound			 	 
+  current = 100
+  
+  1: 2
+  2: 1
+  
+  '12' => arr.length = 4
+  '121' || '122' => arr.length = 2 exponent 3 => 2 * 2 * 2  ;
+  
+  1.length = 2;
+  2.length = 12;
+  
+  '12' => 2 * 12
+  '121' || '122' => 2 * 12 * 2 || 2 * 12 * 12;
+  
+  [000, 000, 000, 000, 000, 000, 000, 000];
+  
+  function findCombos(obj, string) {
+  	let startArr = new Array(string.length).fill(0);
+    let currArr = startArr; // [0, 0, 0]
+    let arr = [];
+    
+    for (let i = 0; i < string.length; i++) {
+    	// '121' obj = { '1': ['a','b'], '2': ['c','d'] } startArr = [0, 0, 0]
+      let idx = startArr.length - 1; // 2
+      startArr[idx] += 1; // 2
+      
+      while*(
+      	if (isInBound(startArr[idx])) {
+      		arr.push(startArr);
+          startArr[idx] += 1;
+      	} else {
+      		startArr = currentArr;
+        }
+     	https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+      }
+    }
+  }
+`
